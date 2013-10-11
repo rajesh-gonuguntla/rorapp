@@ -15,7 +15,7 @@ Simple ROR web app with following features:
 7. Shopping Cart.
 8. CheckOut ( Without Payment gateway Integration )
 
-Application is just developed just to demonstrate basic ROR development.
+Application is developed to demonstrate ROR development skills.
 
 Improvements:
 ========================
