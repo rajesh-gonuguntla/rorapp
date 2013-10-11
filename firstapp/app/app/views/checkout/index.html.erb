@@ -1,0 +1,15 @@
+<%= simple_form_for @order, url: '/checkout/place_order', :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :email %>
+  <%= f.input :phone_number %>
+  <%= f.input :ship_to_first_name %>
+  <%= f.input :ship_to_last_name %>
+  <%= f.input :ship_to_address %>
+  <%= f.input :ship_to_country, :include_blank => t('.select_country') %>
+  <%= f.input :ship_to_state %>
+  <%= f.input :ship_to_city %>
+  <%= f.input :ship_to_zip %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+   
+  </div>
+<% end %>

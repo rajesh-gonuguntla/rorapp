@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+         App
+      </title>
+      <%= stylesheet_link_tag    "application", :media => "all" %><%= javascript_include_tag "application" %><%= csrf_meta_tags %>
+      <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="container">
+         <div class="page-header">
+            
+             <%= link_to 'Home', root_path %>     
+          
+            <% if signed_in? && current_member.admin? %>
+            <ul class="pull-right inline">
+               <li >
+                  Hi <%=current_member.first_name %> 
+               </li>
+               <li><%=link_to "Products", products_path %></li>
+               <li><%=link_to "Categories", categories_path %></li>
+               <li><%=link_to "Sub Categories", sub_categories_path %></li>
+               <li><%=link_to "Members", members_path %></li>           
+               <li><%= link_to 'SignOut', signout_path, method: "delete" %></li>
+            </ul>
+            <% elsif signed_in?
+               %>
+            <ul class="pull-right inline">
+               <li >
+                  Hi <%=current_member.first_name %> !
+               </li>               
+               <li><%= link_to 'SignOut', signout_path, method: "delete" %></li>
+            </ul>
+            <% end %>
+            <% if !signed_in? %>
+            <ul class="pull-right inline">
+               <li><%= link_to 'SignUp', signup_path %></li>
+               <li><%= link_to 'SignIn', signin_path %></li>
+            </ul>
+            <% end %>
+              <% if !@cart.nil? %>
+            <ul class="pull-right inline">
+                  <li> <i class="icon-shopping-cart"></i> <%= link_to "My Cart(#{@cart.total_quantity} Items)", cart_path(@cart)  %> 
+            </li> 
+             </ul> 
+             <% end %>  
+            </ul>
+       
+      </div>
+ 
+      
+                  
+               <% flash.each do |key, value| %>
+               <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+               <% end %>
+        
+               <%= yield %>        
+            
+        
+      </div>
+      <div class="page-footer">
+      </div>
+      <%= javascript_include_tag "application" %>
+   </body>
+</html>
