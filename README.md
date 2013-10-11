@@ -26,6 +26,12 @@ Known Issues:
 =============================
 1. Integration of Bootstrap ver 3 is not correct. May need to rollback to bootstrap ver 2.x
 
+What do you need to setup this app on your local machine ?
+================================================
+1. Make sure to change database.yml with appropriate database options.
+
+
+
 
 
 
