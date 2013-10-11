@@ -1,4 +1,5 @@
 class CheckoutController < ApplicationController
+    include SessionsHelper  
     before_filter :initialize_cart
   
   def index
@@ -13,7 +14,8 @@ class CheckoutController < ApplicationController
 
   def place_order
     @page_title = "Checkout"
-    @order = Order.new(params[:order])
+    @current_member = current_member
+    @order = @current_member.orders.create(params[:order])
     
     populate_order
     if @order.save
@@ -56,3 +58,4 @@ class CheckoutController < ApplicationController
 end
 
 end
+
