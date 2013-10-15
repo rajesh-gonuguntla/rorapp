@@ -1,6 +1,7 @@
 class CheckoutController < ApplicationController
     include SessionsHelper  
     before_filter :initialize_cart
+    before_filter :signed_in_member, only: [:place_order, :index]
   
   def index
       @order = Order.new

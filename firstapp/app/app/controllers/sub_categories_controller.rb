@@ -1,5 +1,5 @@
 class SubCategoriesController < ApplicationController
-  before_filter :admin , only: [:destroy, :new, :show]
+  before_filter :signed_in_admin , only: [:destroy, :new, :show]
   # GET /sub_categories
   # GET /sub_categories.json
   def index

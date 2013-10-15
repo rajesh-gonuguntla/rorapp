@@ -42,7 +42,7 @@ module SessionsHelper
     end
   end
 
-  def admin
+  def signed_in_admin
     unless signed_in? && @current_member.admin
       store_location
       redirect_to signin_path, notice: "Please sign in as Admin."
